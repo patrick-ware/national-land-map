@@ -6,9 +6,16 @@ import * as nationalParkData from "./data/national-parks.json";
 // Styles
 import './App.css';
 
+const fetcher = (...args) => fetch(...args).then(response => response.json());
+
 function App() {
   const position = [39.8283, -98.5795]
   const [activePark, setActivePark] = useState(null);
+  const greenOptions = { color: 'green' }
+
+  const url ="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_ProclaimedForestBoundaries_01/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json"
+  const { data, error } = useSwr(url, { fetcher });
+  const nationalForests = data && !error ? data.features :[];
 
   return (
     <MapContainer center={position} zoom={5} scrollWheelZoom={false}>
