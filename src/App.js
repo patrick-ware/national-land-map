@@ -35,7 +35,7 @@ function App() {
           }}
         >
           <Popup>
-            <div>
+            <div className="popup">
               <h2>{park.properties.Code}</h2>
               <p>{park.properties.Name}</p>
             </div>
