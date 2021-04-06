@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import { Icon } from "leaflet";
+import useSwr from "swr";
 // Data
 import * as nationalParkData from "./data/national-parks.json";
 // Styles
@@ -19,7 +19,7 @@ function App() {
       {nationalParkData.features.map(park => (
         <Marker
           className="park-marker"
-          key={park.properties.PARK_ID}
+          key={park.properties.Code}
           position={[
             park.geometry.coordinates[1],
             park.geometry.coordinates[0]
