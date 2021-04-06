@@ -11,12 +11,24 @@ const fetcher = (...args) => fetch(...args).then(response => response.json());
 function App() {
   const position = [39.8283, -98.5795]
   const [activePark, setActivePark] = useState(null);
-  const greenOptions = { color: 'green' }
+  const [apiData, setApiData] = useState([]);
 
-  const url ="https://opendata.arcgis.com/datasets/3451bcca1dbc45168ed0b3f54c6098d3_0.geojson"
+  const url ="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_ProclaimedForestBoundaries_01/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json"
   const { data, error } = useSwr(url, { fetcher });
   const nationalForests = data && !error ? data.features :[];
 
+  // Fetch data from API
+  function doFetch(){
+  console.log("fetching data from API...");
+    
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log("this is data", data)
+          setApiData(data.features)
+      });
+    }
+  
   return (
     <MapContainer center={position} zoom={5} scrollWheelZoom={false}>
       <TileLayer
