@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Polygon, Popup, TileLayer } from 'react-leaflet'
 import { Icon } from "leaflet";
 import useSwr from "swr";
 // Data
 import * as nationalParkData from "./data/national-parks.json";
+import * as nationalForestData from "./data/national_forests.json";
 // Components
 // Styles
 import "./App.css"
@@ -14,9 +15,10 @@ function App() {
   const position = [39.8283, -98.5795]
   const [activePark, setActivePark] = useState(null);
   const [apiData, setApiData] = useState([]);
-  const url ="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_ProclaimedForestBoundaries_01/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json"
+  const url ="https://opendata.arcgis.com/datasets/3451bcca1dbc45168ed0b3f54c6098d3_0.geojson"
   const { data, error } = useSwr(url, { fetcher });
   const nationalForests = data && !error ? data.features :[];
+  const purpleOptions = { color: 'purple' }
 
   // Fetch data from API
   function doFetch(){
@@ -55,6 +57,13 @@ function App() {
           </Popup>
         </Marker>
       ))}
+      {/*{nationalForestData.features.map(forest => (
+        <Polygon
+          key={forest.properties.FORESTNAME} 
+          pathOptions={purpleOptions} 
+          positions={forest.geometry.coordinates} 
+        />
+      ))}*/}
     </MapContainer>
   );
 }
