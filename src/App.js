@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Icon } from "leaflet";
 import useSwr from "swr";
 // Data
 import * as nationalParkData from "./data/national-parks.json";
+// Components
 // Styles
 import './App.css';
 
@@ -16,6 +18,12 @@ function App() {
   const url ="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_ProclaimedForestBoundaries_01/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json"
   const { data, error } = useSwr(url, { fetcher });
   const nationalForests = data && !error ? data.features :[];
+
+  // Create icon
+  const iconCircle = new Icon({
+    iconUrl: "./img/iconCircle.svg",
+    iconSize: [10, 10]
+  });
 
   // Fetch data from API
   function doFetch(){
@@ -37,7 +45,7 @@ function App() {
       />
       {nationalParkData.features.map(park => (
         <Marker
-          className="park-marker"
+          icon={iconCircle}
           key={park.properties.Code}
           position={[
             park.geometry.coordinates[1],
