@@ -6,21 +6,9 @@ import useSwr from "swr";
 import * as nationalParkData from "./data/national-parks.json";
 // Components
 // Styles
-import './App.css';
+import "./App.css"
 
 const fetcher = (...args) => fetch(...args).then(response => response.json());
-
-// Create icon
-const iconCircle = new Icon({
-  iconUrl: "./img/iconCircle.svg",
-  iconSize: [10, 10],
-  iconAnchor: null,
-  popupAnchor: null,
-  shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-  className: 'park-marker'
-});
 
 function App() {
   const position = [39.8283, -98.5795]
@@ -50,7 +38,6 @@ function App() {
       />
       {nationalParkData.features.map(park => (
         <Marker
-          icon={iconCircle}
           key={park.properties.Code}
           position={[
             park.geometry.coordinates[1],
