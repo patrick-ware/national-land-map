@@ -21,8 +21,14 @@ function App() {
 
   // Create icon
   const iconCircle = new Icon({
-    iconUrl: "./img/iconCircle.svg",
-    iconSize: [10, 10]
+    iconUrl: require("./img/iconCircle.svg"),
+    iconSize: [10, 10],
+    iconAnchor: null,
+    popupAnchor: null,
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    className: 'park-marker'
   });
 
   // Fetch data from API
