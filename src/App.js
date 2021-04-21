@@ -10,26 +10,25 @@ import './App.css';
 
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
+// Create icon
+const iconCircle = new Icon({
+  iconUrl: "./img/iconCircle.svg",
+  iconSize: [10, 10],
+  iconAnchor: null,
+  popupAnchor: null,
+  shadowUrl: null,
+  shadowSize: null,
+  shadowAnchor: null,
+  className: 'park-marker'
+});
+
 function App() {
   const position = [39.8283, -98.5795]
   const [activePark, setActivePark] = useState(null);
   const [apiData, setApiData] = useState([]);
-
   const url ="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_ProclaimedForestBoundaries_01/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json"
   const { data, error } = useSwr(url, { fetcher });
   const nationalForests = data && !error ? data.features :[];
-
-  // Create icon
-  const iconCircle = new Icon({
-    iconUrl: require("./img/iconCircle.svg"),
-    iconSize: [10, 10],
-    iconAnchor: null,
-    popupAnchor: null,
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: 'park-marker'
-  });
 
   // Fetch data from API
   function doFetch(){
