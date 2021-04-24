@@ -10,3 +10,17 @@
 .popup {
   color: #18420f;
 }
+
+.hot-chocolate-icon {
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px black;
+}
+
+.hot-chocolate-icon:after {
+    display: block;
+    width: 30px;
+    height: 30px;
+    content: "☕";
+    font-size: 20px;
+}

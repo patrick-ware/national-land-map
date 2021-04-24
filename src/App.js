@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { MapContainer, Marker, Polygon, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Polygon, Popup, TileLayer } from "react-leaflet"
 import L from "leaflet";
 import useSwr from "swr";
 // Data
@@ -16,15 +16,13 @@ function App() {
   const [apiData, setApiData] = useState([]);
   const url ="https://opendata.arcgis.com/datasets/3451bcca1dbc45168ed0b3f54c6098d3_0.geojson"
   const { data, error } = useSwr(url, { fetcher });
-  const nationalForests = data && !error ? data.features :[];
-  const purpleOptions = { color: 'purple' }
+
 
   // Create custom marker from svg
-  const markerIcon = new L.Icon({
-    iconUrl: require("./img/circle.svg"),
+  const markerIcon : L.DivIcon = L.divIcon({
+    iconUrl: require("./img/circle.png"),
     iconSize: [10, 10],
-    iconAnchor: [0, 0], //[left/right, top/bottom]
-    popupAnchor: [0, 0], //[left/right, top/bottom]
+    className: 'park-marker'
   });
 
   // Fetch data from API
