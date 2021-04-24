@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <div className="control-bar">
-      TEST
+        <div className="control-bar-title"> National Lands Map </div>
       </div>
       <MapContainer className="fade-in" center={position} zoom={5} scrollWheelZoom={false}>
         <TileLayer
@@ -42,7 +42,7 @@ function App() {
             }}
           >
             <Tooltip direction="top" offset={[7, 10]}>
-              {park.properties.Name}
+              <span className="tooltip"> {park.properties.Name}</span>
             </Tooltip>
           </Marker>
         ))}

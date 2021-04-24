@@ -3,8 +3,8 @@
   height: 95vh;
 }
 
-.popup {
-  color: #18420f;
+.tooltip {
+  font-weight: 900;
 }
 
 .park-marker {
@@ -28,6 +28,8 @@
 }
 
 .control-bar-title {
+  font-size: 20pt;
+  margin: auto;
 }
 
 .control-bar-controls {
