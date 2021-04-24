@@ -20,10 +20,11 @@ function App() {
 
   // Create custom marker from svg
   const markerIcon : L.DivIcon = L.divIcon({
-    iconUrl: require("./img/circle.png"),
-    iconSize: [10, 10],
-    className: 'park-marker'
-  });
+    className: "hot-chocolate-icon",
+    iconSize: [30, 30],
+    iconAnchor: [0, 0],
+    popupAnchor: [15, 0]
+});
 
   // Fetch data from API
   function doFetch(){
