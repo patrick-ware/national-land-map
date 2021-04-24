@@ -3,10 +3,7 @@ import { MapContainer, Marker, Polygon, Popup, TileLayer } from 'react-leaflet'
 import L from "leaflet";
 import useSwr from "swr";
 // Data
-import * as nationalParkData from "./data/national-parks.json";
-//import * as nationalForestData from "./data/national_forests.json";
-// Components
-
+import nationalParkData from "./data/national-parks.json";
 // Styles
 import "./App.css"
 import "leaflet/dist/leaflet.css";
@@ -25,9 +22,9 @@ function App() {
   // Create custom marker from svg
   const markerIcon = new L.Icon({
     iconUrl: require("./img/circle.svg"),
-    iconSize: [40, 40],
-    iconAnchor: [17, 46], //[left/right, top/bottom]
-    popupAnchor: [0, -46], //[left/right, top/bottom]
+    iconSize: [10, 10],
+    iconAnchor: [0, 0], //[left/right, top/bottom]
+    popupAnchor: [0, 0], //[left/right, top/bottom]
   });
 
   // Fetch data from API
@@ -68,13 +65,6 @@ function App() {
           </Popup>
         </Marker>
       ))}
-      {/*{nationalForestData.features.map(forest => (
-        <Polygon
-          key={forest.properties.FORESTNAME} 
-          pathOptions={purpleOptions} 
-          positions={forest.geometry.coordinates} 
-        />
-      ))}*/}
     </MapContainer>
   );
 }
