@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { MapContainer, Marker, Polygon, Popup, TileLayer } from "react-leaflet"
+import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer } from "react-leaflet"
 import L from "leaflet";
 import useSwr from "swr";
 // Data
@@ -55,6 +55,7 @@ function App() {
             setActivePark(park);
           }}
         >
+          <Tooltip direction="top">{park.properties.Name}</Tooltip>
           <Popup>
             <div className="popup">
               <h2>{park.properties.Code}</h2>
