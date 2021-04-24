@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer } from "react-leaflet"
 import L from "leaflet";
 // Data
@@ -8,8 +8,36 @@ import "./App.css"
 import "leaflet/dist/leaflet.css";
 
 function App() {
-  const position = [39.8283, -98.5795]
+  const center = [39.8283, -98.5795];
+  const zoom = 5;
   const [activePark, setActivePark] = useState(null);
+
+
+  function DisplayPosition({ map }) {
+    const [position, setPosition] = useState(map.getCenter())
+
+    const onClick = useCallback(() => {
+      map.setView(center, zoom)
+    }, [map])
+
+    const onMove = useCallback(() => {
+      setPosition(map.getCenter())
+    }, [map])
+
+    useEffect(() => {
+      map.on('move', onMove)
+      return () => {
+        map.off('move', onMove)
+      }
+    }, [map, onMove])
+
+    return (
+      <p>
+        latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
+        <button onClick={onClick}>reset</button>
+      </p>
+    )
+  }
 
   // Create custom marker
   const markerIcon : L.DivIcon = L.divIcon({
@@ -19,12 +47,15 @@ function App() {
     popupAnchor: [8, 10]
   });
 
+  //
+
   return (
     <div>
       <div className="control-bar">
         <div className="control-bar-title"> National Lands Map </div>
+        <button>reset</button>
       </div>
-      <MapContainer className="fade-in" center={position} zoom={5} scrollWheelZoom={false}>
+      <MapContainer className="fade-in" center={center} zoom={zoom} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
