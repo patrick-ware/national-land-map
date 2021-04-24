@@ -22,7 +22,7 @@ function App() {
     className: "park-marker",
     iconSize: [30, 30],
     iconAnchor: [0, 0],
-    popupAnchor: [15, 0]
+    popupAnchor: [8, 10]
 });
 
   // Fetch data from API
