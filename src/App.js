@@ -17,7 +17,6 @@ function App() {
   const url ="https://opendata.arcgis.com/datasets/3451bcca1dbc45168ed0b3f54c6098d3_0.geojson"
   const { data, error } = useSwr(url, { fetcher });
 
-
   // Create custom marker from svg
   const markerIcon : L.DivIcon = L.divIcon({
     className: "park-marker",
