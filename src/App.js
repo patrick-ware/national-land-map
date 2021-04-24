@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { MapContainer, Marker, Polygon, Popup, TileLayer } from 'react-leaflet'
-import { Icon } from "leaflet";
+import L from "leaflet";
 import useSwr from "swr";
 // Data
 import * as nationalParkData from "./data/national-parks.json";
-import * as nationalForestData from "./data/national_forests.json";
+//import * as nationalForestData from "./data/national_forests.json";
 // Components
+
 // Styles
 import "./App.css"
+import "leaflet/dist/leaflet.css";
 
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
@@ -19,6 +21,14 @@ function App() {
   const { data, error } = useSwr(url, { fetcher });
   const nationalForests = data && !error ? data.features :[];
   const purpleOptions = { color: 'purple' }
+
+  // Create custom marker from svg
+  const markerIcon = new L.Icon({
+    iconUrl: require("./img/circle.svg"),
+    iconSize: [40, 40],
+    iconAnchor: [17, 46], //[left/right, top/bottom]
+    popupAnchor: [0, -46], //[left/right, top/bottom]
+  });
 
   // Fetch data from API
   function doFetch(){
@@ -40,6 +50,7 @@ function App() {
       />
       {nationalParkData.features.map(park => (
         <Marker
+          icon={markerIcon}
           key={park.properties.Code}
           position={[
             park.geometry.coordinates[1],
