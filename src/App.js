@@ -20,7 +20,7 @@ function App() {
 
   // Create custom marker from svg
   const markerIcon : L.DivIcon = L.divIcon({
-    className: "hot-chocolate-icon",
+    className: "park-marker",
     iconSize: [30, 30],
     iconAnchor: [0, 0],
     popupAnchor: [15, 0]
