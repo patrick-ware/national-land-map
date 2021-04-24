@@ -21,9 +21,10 @@ function App() {
 
   return (
     <div>
-      <div>
+      <div className="control-bar">
+      TEST
       </div>
-      <MapContainer center={position} zoom={5} scrollWheelZoom={false}>
+      <MapContainer className="fade-in" center={position} zoom={5} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
