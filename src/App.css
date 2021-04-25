@@ -14,11 +14,16 @@ html, body, #root, .App {
 }
 
 .park-marker {
-  background-color: #204a23;
+  background-color: #521012;
   transition-duration: 0.4s;
-  width: 1px;
-  height: 1px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  border: 1.5px solid white;
+  opacity: 0.9;
+}
+
+.park-marker:after {
 }
 
 .park-marker:hover {
