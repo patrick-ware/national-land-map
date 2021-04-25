@@ -10,9 +10,10 @@ import "leaflet/dist/leaflet.css";
 function App() {
   const center = [39.8283, -98.5795];
   const zoom = 5;
-  const [activePark, setActivePark] = useState(null);
+  const [activePark, setActivePark] = useState(null)
+  const [map, setMap] = useState(null)
 
-
+  // Display coordinates and zoom reset
   function DisplayPosition({ map }) {
     const [position, setPosition] = useState(map.getCenter())
 
@@ -53,9 +54,9 @@ function App() {
     <div>
       <div className="control-bar">
         <div className="control-bar-title"> National Lands Map </div>
-        <button>reset</button>
+        {map ? <DisplayPosition map={map} /> : null}
       </div>
-      <MapContainer className="fade-in" center={center} zoom={zoom} scrollWheelZoom={false}>
+      <MapContainer className="fade-in" center={center} zoom={zoom} scrollWheelZoom={false} whenCreated={setMap}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
