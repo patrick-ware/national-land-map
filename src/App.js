@@ -34,7 +34,7 @@ function App() {
 
     return (
       <div>
-        <span>Latitude: {position.lat.toFixed(4)}, Longitude: {position.lng.toFixed(4)}{' '}<button onClick={onClick}>reset</button></span>
+        <span>Latitude: {position.lat.toFixed(4)}, Longitude: {position.lng.toFixed(4)}{' '}<button className="button" onClick={onClick}>reset view</button></span>
       </div>
     )
   }
