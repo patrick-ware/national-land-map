@@ -33,10 +33,9 @@ function App() {
     }, [map, onMove])
 
     return (
-      <p>
-        latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
-        <button onClick={onClick}>reset</button>
-      </p>
+      <div>
+        <span>Latitude: {position.lat.toFixed(4)}, Longitude: {position.lng.toFixed(4)}{' '}<button onClick={onClick}>reset</button></span>
+      </div>
     )
   }
 
@@ -52,33 +51,37 @@ function App() {
 
   return (
     <div>
-      <div className="control-bar">
-        <div className="control-bar-title"> National Lands Map </div>
-        {map ? <DisplayPosition map={map} /> : null}
+      <div className="title-bar">
+        <div className="title-bar-title"> National Lands Map </div>
       </div>
-      <MapContainer className="fade-in" center={center} zoom={zoom} scrollWheelZoom={false} whenCreated={setMap}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {nationalParkData.features.map(park => (
-          <Marker
-            icon={markerIcon}
-            key={park.properties.Code}
-            position={[
-              park.geometry.coordinates[1],
-              park.geometry.coordinates[0]
-            ]}
-            onClick={() => {
-              setActivePark(park);
-            }}
-          >
-            <Tooltip direction="top" offset={[7, 10]}>
-              <span className="tooltip"> {park.properties.Name}</span>
-            </Tooltip>
-          </Marker>
-        ))}
-      </MapContainer>
+      <div>
+        <div className="control-panel">
+          {map ? <DisplayPosition map={map} /> : null}
+        </div>
+        <MapContainer className="fade-in" center={center} zoom={zoom} scrollWheelZoom={false} whenCreated={setMap}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {nationalParkData.features.map(park => (
+            <Marker
+              icon={markerIcon}
+              key={park.properties.Code}
+              position={[
+                park.geometry.coordinates[1],
+                park.geometry.coordinates[0]
+              ]}
+              onClick={() => {
+                setActivePark(park);
+              }}
+            >
+              <Tooltip direction="top" offset={[7, 10]}>
+                <span className="tooltip"> {park.properties.Name}</span>
+              </Tooltip>
+            </Marker>
+          ))}
+        </MapContainer>
+      </div>
     </div>
   );
 }

@@ -19,7 +19,7 @@
   font-size: 14px;
 }
 
-.control-bar {
+.title-bar {
   display: flex;
   color: white;
   background-color: gray;
@@ -27,12 +27,27 @@
   height: 5vh;
 }
 
-.control-bar-title {
+.title-bar-title {
   font-size: 20pt;
   margin: auto;
 }
 
-.control-bar-controls {
+.control-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #242424;
+  color: white;
+  font-family: 'Inconsolata', monospace;
+  bottom: 10px;
+  left: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.8;
+  z-index: 314159;
 }
 
 .fade-in {
