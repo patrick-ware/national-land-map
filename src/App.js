@@ -41,7 +41,7 @@ function App() {
 
   // Create custom marker
   const markerIcon : L.DivIcon = L.divIcon({
-    className: "park-marker",
+    className: "park-marker fade-in",
     iconSize: [10, 10],
     iconAnchor: [0, 0],
     popupAnchor: [8, 10]
