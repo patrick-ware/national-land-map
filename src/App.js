@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer } from "react-leaflet"
+import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer, LayersControl } from "react-leaflet"
 import L from "leaflet";
 // Data
 import nationalParkData from "./data/national-parks.json";
@@ -55,10 +55,9 @@ function App() {
         <div className="title-bar-title"> National Lands Map </div>
       </div>
       <div>
-        <div className="control-panel">
-          {map ? <DisplayPosition map={map} /> : null}
-        </div>
         <MapContainer className="fade-in" center={center} zoom={zoom} scrollWheelZoom={false} whenCreated={setMap}>
+        <LayersControl position="topright">
+        </LayersControl>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -81,6 +80,9 @@ function App() {
             </Marker>
           ))}
         </MapContainer>
+        <div className="control-panel">
+          {map ? <DisplayPosition map={map} /> : null}
+        </div>
       </div>
     </div>
   );
