@@ -75,7 +75,7 @@ function App() {
                 setActivePark(park);
               }}
             >
-              <Tooltip direction="top" offset={[7, -2]}>
+              <Tooltip direction="top" offset={[5, 3]}>
                 <span className="tooltip"> {park.properties.Name}</span>
               </Tooltip>
             </Marker>
