@@ -9,19 +9,22 @@ html, body, #root, .App {
 }
 
 .tooltip {
-  font-weight: 900;
+  font-weight: bold;
+  font-family: 'Raleway';
 }
 
 .park-marker {
-  color: #204a23;
+  background-color: #204a23;
+  transition-duration: 0.4s;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
 }
 
-.park-marker:after {
-  display: block;
+.park-marker:hover {
+  color: #f2de00;
   width: 10px;
   height: 10px;
-  content: "◉";
-  font-size: 14px;
 }
 
 .title-bar {
@@ -64,7 +67,7 @@ html, body, #root, .App {
   font-weight: normal;
   border: none;
   border-radius: 4px;
-  padding: 1px 4px 1px 4px;
+  padding: 1px 4px 3px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

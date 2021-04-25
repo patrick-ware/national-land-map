@@ -42,7 +42,7 @@ function App() {
   // Create custom marker
   const markerIcon : L.DivIcon = L.divIcon({
     className: "park-marker",
-    iconSize: [30, 30],
+    iconSize: [10, 10],
     iconAnchor: [0, 0],
     popupAnchor: [8, 10]
   });
@@ -75,7 +75,7 @@ function App() {
                 setActivePark(park);
               }}
             >
-              <Tooltip direction="top" offset={[7, 10]}>
+              <Tooltip direction="top" offset={[7, -2]}>
                 <span className="tooltip"> {park.properties.Name}</span>
               </Tooltip>
             </Marker>
