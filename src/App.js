@@ -12,7 +12,6 @@ function App() {
   const zoom = 5;
   const [activePark, setActivePark] = useState(null)
   const [map, setMap] = useState(null)
-  const [coords,setCoords] = useState(null)
 
   // Display coordinates and zoom reset
   function DisplayPosition({ map }) {
@@ -49,14 +48,10 @@ function App() {
   });
 
   // Get coordinates on click
-  function handleCoordsClick(e){
-    setCoords(e.latlng)
-    console.log("the coordinates from the last click are", JSON.stringify(coords))
-  }
 
   return (
     <div>
-      <div className="title-bar" onClick={handleCoordsClick}>
+      <div className="title-bar">
         <div className="title-bar-title"> National Lands Map </div>
       </div>
       <div>
@@ -66,7 +61,6 @@ function App() {
           zoom={zoom} 
           scrollWheelZoom={false} 
           whenCreated={setMap}
-          onClick={handleCoordsClick}
         >
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="OpenStreetMap">
