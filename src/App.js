@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer, LayersControl, useMap, useMapEvent } from "react-leaflet"
+import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer, LayersControl, useMap, useMapEvent, useMapEvents } from "react-leaflet"
 import L from "leaflet";
 // Data
 import nationalParkData from "./data/national-parks.json";
@@ -54,6 +54,13 @@ function App() {
     return null
   }
 
+  function MyComponent() {
+    const map = useMapEvent('click', () => {
+      console.log(map.getBounds())
+    })
+    return null
+  }
+
   return (
     <div>
       <div className="title-bar">
@@ -64,8 +71,9 @@ function App() {
           className="fade-in" 
           center={center} 
           zoom={zoom} 
-          scrollWheelZoom={false} 
+          scrollWheelZoom={true} 
           whenCreated={setMap}
+          onClick = {ZoomTest}
         >
           <LayersControl position="topright">
             <LayersControl.BaseLayer checked name="OpenStreetMap">
@@ -105,6 +113,7 @@ function App() {
             </Marker>
           ))}
         <ZoomTest />
+        <MyComponent />
         </MapContainer>
         <div className="control-panel">
           {map ? <DisplayPosition map={map} /> : null}
