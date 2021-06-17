@@ -55,17 +55,14 @@ function App() {
   }
 
   function MyComponent() {
-    const map = useMapEvents({
-      click: () => {
-        map.locate()
-      },
-      locationfound: (location) => {
-        console.log('location found:', location)
-      },
-    })
+    useMapEvents({
+      click(ev) {
+      const { lat, lng } = ev.latlng;
+      console.log(lat, lng)
+      }
+    });
     return null
   }
-
 
   return (
     <div>
