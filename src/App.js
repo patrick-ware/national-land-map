@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer, LayersControl, useMapEvent } from "react-leaflet"
+import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer, LayersControl, useMap, useMapEvent } from "react-leaflet"
 import L from "leaflet";
 // Data
 import nationalParkData from "./data/national-parks.json";
@@ -47,7 +47,12 @@ function App() {
     popupAnchor: [8, 10]
   });
 
-  // Get coordinates on click
+  // Testing out hooks
+  function MyComponent() {
+    const map = useMap()
+    console.log('map center:', map.getCenter())
+    return null
+  }
 
   return (
     <div>
