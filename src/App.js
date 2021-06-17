@@ -123,6 +123,10 @@ function App() {
         <div className="control-panel">
           {map ? <DisplayPosition map={map} /> : null}
         </div>
+        <div className="event-track-panel">
+          <div>Location of last click:</div> 
+          <div>{JSON.stringify(clickPointCoords)}</div>
+        </div>
       </div>
     </div>
   );

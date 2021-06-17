@@ -62,6 +62,24 @@ html, body, #root, .App {
   z-index: 314159;
 }
 
+.event-track-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: #242424;
+  color: white;
+  font-family: 'Inconsolata', monospace;
+  bottom: 60px;
+  left: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.8;
+  z-index: 314159;
+}
+
 .button {
   background-color: black;
   color: white;
