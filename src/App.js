@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { MapContainer, Marker, Polygon, Popup, Tooltip, TileLayer, LayersControl, useMap, useMapEvent, useMapEvents } from "react-leaflet"
+import { MapContainer, Marker, Tooltip, TileLayer, LayersControl, useMap, useMapEvent, useMapEvents } from "react-leaflet"
 import L from "leaflet";
 // Data
 import nationalParkData from "./data/national-parks.json";
@@ -58,7 +58,7 @@ function App() {
   function MyComponent() {
     useMapEvents({
       click(ev) {
-      setClickPointCoords(ev.mouseEventToLatLng)
+      setClickPointCoords(ev.latlng)
       console.log("coordinates are", clickPointCoords)
       }
     });
