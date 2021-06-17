@@ -48,9 +48,9 @@ function App() {
   });
 
   // Testing out hooks
-  function MyComponent() {
+  function ZoomTest() {
     const map = useMap()
-    console.log('map center:', map.getCenter())
+    console.log('map zoom:', map.getZoom())
     return null
   }
 
@@ -67,26 +67,26 @@ function App() {
           scrollWheelZoom={false} 
           whenCreated={setMap}
         >
-        <LayersControl position="topright">
-          <LayersControl.BaseLayer checked name="OpenStreetMap">
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="OpenStreetMap (Black & White)">
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
-            />
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="OpenTopoMap">
-            <TileLayer
-              attribution='Kartendaten: © <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende, SRTM | Kartendarstellung: © <a href="http://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-              url="https://tile.opentopomap.org/{z}/{x}/{y}.png"
-            />
-          </LayersControl.BaseLayer>
-        </LayersControl>
+          <LayersControl position="topright">
+            <LayersControl.BaseLayer checked name="OpenStreetMap">
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="OpenStreetMap (Black & White)">
+              <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+              />
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="OpenTopoMap">
+              <TileLayer
+                attribution='Kartendaten: © <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende, SRTM | Kartendarstellung: © <a href="http://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                url="https://tile.opentopomap.org/{z}/{x}/{y}.png"
+              />
+            </LayersControl.BaseLayer>
+          </LayersControl>
           {nationalParkData.features.map(park => (
             <Marker
               icon={markerIcon}
@@ -104,6 +104,7 @@ function App() {
               </Tooltip>
             </Marker>
           ))}
+        <ZoomTest />
         </MapContainer>
         <div className="control-panel">
           {map ? <DisplayPosition map={map} /> : null}
