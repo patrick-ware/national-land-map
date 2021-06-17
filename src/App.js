@@ -55,11 +55,17 @@ function App() {
   }
 
   function MyComponent() {
-    const map = useMapEvent('click', () => {
-      console.log(map.getBounds())
+    const map = useMapEvents({
+      click: () => {
+        map.locate()
+      },
+      locationfound: (location) => {
+        console.log('location found:', location)
+      },
     })
     return null
   }
+
 
   return (
     <div>
@@ -70,7 +76,8 @@ function App() {
         <MapContainer
           className="fade-in" 
           center={center} 
-          zoom={zoom} 
+          zoom={zoom}
+          boxZoom={true}
           scrollWheelZoom={true} 
           whenCreated={setMap}
           onClick = {ZoomTest}
