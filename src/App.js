@@ -12,6 +12,7 @@ function App() {
   const zoom = 5;
   const [activePark, setActivePark] = useState(null)
   const [map, setMap] = useState(null)
+  const [clickPointCoords, setClickPointCoords]= useState({})
 
   // Display coordinates and zoom reset
   function DisplayPosition({ map }) {
@@ -57,8 +58,8 @@ function App() {
   function MyComponent() {
     useMapEvents({
       click(ev) {
-      const { lat, lng } = ev.latlng;
-      console.log(lat, lng)
+      setClickPointCoords(ev.mouseEventToLatLng)
+      console.log("coordinates are", clickPointCoords)
       }
     });
     return null
