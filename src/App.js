@@ -68,7 +68,7 @@ function App() {
   return (
     <div>
       <div className="title-bar">
-        <div className="title-bar-title"> National Lands Map </div>
+        <div className="title-bar-title"> National Lands Map</div>
       </div>
       <div>
         <MapContainer
@@ -125,7 +125,8 @@ function App() {
         </div>
         <div className="event-track-panel">
           <div>Location of last click:</div> 
-          <div>{JSON.stringify(clickPointCoords)}</div>
+          <div>Latitude: {clickPointCoords.lat}</div>
+          <div>Longitude: {clickPointCoords.lng}</div>
         </div>
       </div>
     </div>
